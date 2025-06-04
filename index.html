@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calahonda - AI-Powered Software Development and Consulting">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="Calahonda, AI Development, Machine Learning, Deep Learning, .NET, Azure, Offshore, Consulting, Argentina">
+
+    <title>Calahonda</title>
+
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-bg: #1b5e20; /* Forest Green */
+            --secondary-bg: #2e7d32; /* Darker Green */
+            --light-bg: #f0f7f0; /* Softer Light Green */
+            --text-primary: #ffffff;
+            --text-secondary: #e0e7d8; /* Softer Light Green Text */
+            --accent-color: #4caf50; /* Vibrant Green */
+            --glass-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: linear-gradient(to bottom, var(--accent-color), var(--accent-color));
+            padding: 1.2rem 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand img {
+            width: 90px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar-brand img:hover {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-left: 2rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--text-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(27, 94, 32, 0.8), rgba(46, 125, 50, 0.7)), url('header-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-text {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .intro-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .btn-xl {
+            background-color: var(--accent-color);
+            color: var(--text-primary);
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-xl:hover {
+            background-color: #388e3c;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .bg-dark {
+            background-color: var(--primary-bg);
+        }
+
+        .bg-darker {
+            background-color: var(--secondary-bg);
+        }
+
+        .bg-light {
+            background-color: var(--light-bg);
+            color: #1b5e20;
+        }
+
+        .clients img {
+            max-width: 180px;
+            margin: 1.5rem auto;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: grayscale(20%);
+        }
+
+        .clients img:hover {
+            transform: scale(1.15);
+            filter: grayscale(0);
+        }
+
+        .contact-info {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 2;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--text-primary);
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .intro-heading {
+                font-size: 2.8rem;
+            }
+
+            .section-heading {
+                font-size: 2.2rem;
+            }
+
+            .nav-link {
+                margin-left: 0;
+                margin-bottom: 1rem;
+            }
+
+            .navbar {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top"><img src="logo.png" alt="Calahonda Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#calahonda">Calahonda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#people">People</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#customers">Customers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <h1 class="intro-heading">We Craft AI-Powered Solutions</h1>
+                <a href="#calahonda" class="btn btn-xl">Discover More</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="calahonda" class="bg-dark">
+        <div class="container">
+            <div class="row text-center">
+                <h2 class="section-heading">Calahonda</h2>
+                <p>
+                    Since 2022, Calahonda has been a trailblazer in AI-powered software development, addressing the U.S. IT market’s growing demand for intelligent, scalable solutions. With our headquarters in Argentina, we leverage the region’s rich pool of technical talent to deliver cutting-edge AI solutions at competitive rates. As a boutique firm, we combine agility, innovation, and a deep commitment to excellence, redefining how businesses harness artificial intelligence to solve complex challenges.<br><br>
+                    Our mission is to empower organizations with bespoke AI applications and expert consulting, driving efficiency, innovation, and competitive advantage. Specializing in machine learning, deep learning, and data-driven automation, our team delivers tailored solutions that integrate seamlessly with your business processes. From predictive analytics to natural language processing, we provide both onsite and offshore AI development services with unmatched precision, transparency, and a passion for transforming industries through intelligent technology.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="bg-darker">
+        <div class="container">
+            <div class="row text-center">
+                <h2 class="section-heading">Our AI Services</h2>
+                <p>
+                    Calahonda specializes in delivering AI-driven solutions that empower businesses to thrive in a data-centric world. Our services encompass the full spectrum of artificial intelligence, from machine learning model development to advanced generative AI. We guide our clients through the complexities of AI adoption, ensuring solutions are tailored to their unique needs and aligned with their strategic objectives.<br><br>
+                    Our agile approach allows us to adapt to your workflows, leveraging platforms like Open AI, Azure Open AI and Google Vertex to build robust, scalable AI systems. Our Time & Materials-based AI Development Service offers flexibility, covering everything from data pipeline creation to model deployment and optimization. Whether you need predictive analytics, intelligent automation, or custom AI integrations, our team of AI experts—rooted in Argentina’s vibrant tech ecosystem—delivers transformative solutions that drive measurable results.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="people" class="bg-dark">
+        <div class="container">
+            <div class="row text-center">
+                <h2 class="section-heading">Our AI Talent</h2>
+                <p>
+                    At Calahonda, our team is the cornerstone of our success, uniting diverse AI specialists, data scientists, and machine learning engineers who share a passion for pushing the boundaries of artificial intelligence. Based in Argentina, our professionals bring a unique blend of technical expertise and innovative thinking, enabling us to tackle the most sophisticated AI challenges with creativity and precision.<br><br>
+                    We foster a collaborative, inclusive culture that encourages continuous learning and experimentation with cutting-edge AI technologies. Our team thrives on solving complex problems, from developing advanced neural networks to optimizing large-scale data models. At Calahonda, we’re committed to creating a workplace where exceptional talent drives innovation, making it a hub for AI excellence that inspires and retains the brightest minds in the field.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="customers" class="bg-darker">
+        <div class="container">
+            <div class="row text-center">
+                <h2 class="section-heading">Our Customers</h2>
+                <p>
+                    Calahonda partners with leading organizations across industries, delivering AI-driven solutions that transform operations and unlock new opportunities. Our clients, ranging from global technology leaders to innovative enterprises, rely on our expertise in machine learning, predictive analytics, and intelligent automation to achieve their goals. We collaborate closely with each client, ensuring our AI solutions are tailored to their specific challenges and deliver tangible business value.<br><br>
+                    Our work spans diverse sectors, from automotive to technology, showcasing our ability to apply AI creatively and effectively. Below are a few of the esteemed organizations we’ve empowered with our AI expertise, reflecting our commitment to driving innovation and success through intelligent technology.
+                </p>
+				</p>&nbsp;<p>
+				</p>&nbsp;<p>
+                <div class="clients">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6"><img src="microsoft.png" class="img-responsive img-centered" alt="Microsoft"></div>
+						<div class="col-md-3 col-sm-6"><img src="google.png" class="img-responsive img-centered" alt="Google"></div>
+                        <div class="col-md-3 col-sm-6"><img src="toyota.png" class="img-responsive img-centered" alt="Toyota"></div>
+                        <div class="col-md-3 col-sm-6"><img src="jm.png" class="img-responsive img-centered" alt="JM"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-dark">
+        <div class="container">
+            <div class="row text-center">
+                <h2 class="section-heading">Contact Us</h2>
+                <div class="contact-info">
+                    <p>
+                        Ready to harness the power of AI for your business? Our team, based in Argentina and serving clients globally, is here to turn your vision into reality. Whether you’re exploring AI for the first time or seeking to optimize existing models, we’re ready to collaborate. Contact us to discuss your AI project, from machine learning solutions to advanced automation, and discover how Calahonda can drive your success.<br><br>
+                        Reach out via phone or email to connect with our Argentina-based team. We’re committed to providing prompt, personalized responses and delivering AI solutions that transform your business. Let’s build the future together.
+                    </p>
+					<br>
+                    <p>Argentina: <a href="tel:+541147073333">(+54) 11 5976 8898</a></p>
+                    <p>US: <a href="tel:+14253099035">(+1) 425 309 9035</a></p>
+                    <p><a href="mailto:info@calahonda.consulting">info@calahonda.consulting</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('.nav-link, .btn-xl').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Trigger animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
